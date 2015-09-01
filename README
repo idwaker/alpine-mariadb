@@ -1,1 +1,3 @@
 Mysql docker image based on alpine image
+
+development build -- will use similar format as official mysql image in future
