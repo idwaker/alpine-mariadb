@@ -24,5 +24,5 @@ EXPOSE 3306
 
 
 # create entry point
-ENTRYPOINT ["mysqld_safe"]
+CMD ["mysqld_safe"]
 
