@@ -5,4 +5,5 @@ MariaDB image using Alpine base image
 
 
 - User: root [ No Password ]
+- User: admin [ Password: admin ]
 
