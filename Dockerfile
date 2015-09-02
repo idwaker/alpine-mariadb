@@ -13,8 +13,9 @@ RUN apk add --update mariadb mariadb-client \
 	&& echo "mysql_install_db --user=mysql" > /tmp/config \
   	&& echo "mysqld_safe &" >> /tmp/config \
   	&& echo "mysqladmin --silent --wait=30 ping || exit 1" >> /tmp/config \
-  	&& echo "mysql -uroot --execute=\"CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';\"" \
+  	&& echo "mysql -uroot --execute=\"CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';\"" >> /tmp/config \
   	&& echo "mysql -uroot --execute=\"GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;\"" >> /tmp/config \
+  	&& echo "mysqladmin reload" >> /tmp/config \
   	&& sh /tmp/config \
   	&& rm -f /tmp/config
 
