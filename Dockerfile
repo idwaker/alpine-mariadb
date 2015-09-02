@@ -8,8 +8,8 @@ RUN apk update && apk upgrade && \
 	sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
 
 # configure mysql
-RUN echo "mysql_install_db --user=mysql" && \
-  	echo "mysqld_safe &" > /tmp/config && \
+RUN echo "mysql_install_db --user=mysql" > /tmp/config && \
+  	echo "mysqld_safe &" >> /tmp/config && \
   	echo "mysqladmin --silent --wait=30 ping || exit 1" >> /tmp/config && \
   	echo "mysqladmin -u root password 'root'" >> /tmp/config && \
   	sh /tmp/config && \
