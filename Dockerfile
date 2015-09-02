@@ -3,8 +3,8 @@
 FROM alpine
 
 # upgrade
-RUN apk update && apk upgrade && \
-	apk add --update mariadb mariadb-client && rm -rf /var/cache/apk/*
+RUN apk add --update mariadb mariadb-client && \
+	apk cache clean
 
 # from official mariadb dockerfile
 # comment out a few problematic configuration values
@@ -24,7 +24,7 @@ RUN echo "mysql_install_db --user=mysql" > /tmp/config && \
   	rm -f /tmp/config
 
 # define mountable volumes
-VOLUME ["/etc/mysql/my.cnf", "/var/lib/mysql"]
+VOLUME ["/var/lib/mysql"]
 
 
 # expose port
